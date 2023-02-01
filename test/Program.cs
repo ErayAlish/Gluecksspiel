@@ -1,9 +1,9 @@
 ﻿namespace Glüksspiel;
 using System;
 using System.Timers;
+using System.Xml.Serialization;
 
-
-    class Program
+class Program
     {
        static Timer timer = new Timer();
     static void Main(string[] args)
@@ -20,7 +20,7 @@ using System.Timers;
 
             Console.WriteLine("Spiel-Info: 1");
             Console.WriteLine("Spiel Starten: 2");
-            Console.WriteLine("wahlen Sie bite einen Option.");//menu
+            Console.WriteLine("wahlen Sie einen Option."); //menu
             flag = (int.TryParse(Console.ReadLine(), out menu));
             if (flag == true && menu < 1)
             {
@@ -60,6 +60,8 @@ using System.Timers;
                         flag2 = (Double.TryParse(Console.ReadLine(), out bet));
                         timer.Interval = 25000; // 25 sek.
                         timer.Enabled = true;
+                        timer.Start();
+                        
                         if (flag2 == true && bet < 1)
                         {
 
@@ -88,12 +90,10 @@ using System.Timers;
                     } while (true);
 
                 } while (true);
-
-            } while (true) ;
-
-
-
-    }   }while (true);
-    }
+            }
+            
+        } while (true);
+    }   
+}
 
 
