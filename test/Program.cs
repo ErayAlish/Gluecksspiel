@@ -13,20 +13,20 @@ class Program
         int menu = 0;
         double bet = 0;
 
-        Console.WriteLine("Herzlichen Wilkommen");
+        Console.WriteLine("Welcome");
         Console.WriteLine("----------------------------");
         do
         {
 
-            Console.WriteLine("Spiel-Info: 1");
-            Console.WriteLine("Spiel Starten: 2");
-            Console.WriteLine("wahlen Sie einen Option."); //menu
+            Console.WriteLine("Game Info: 1");
+            Console.WriteLine("Start Game: 2");
+            Console.WriteLine("Choose an option."); //menu
             flag = (int.TryParse(Console.ReadLine(), out menu));
             if (flag == true && menu < 1)
             {
 
-                Console.WriteLine("Falsche Eingabe");
-                Console.WriteLine("Sie werden wieder zu menu geleitet...");
+                Console.WriteLine("Wrong input");
+                Console.WriteLine("You will be redirected to the menu...");
                 Thread.Sleep(2000);
                 Console.Clear();
 
@@ -34,8 +34,8 @@ class Program
             else if (flag == true && menu > 2)
             {
 
-                Console.WriteLine("Falsche Eingabe");
-                Console.WriteLine("Sie werden wieder zu menu geleitet...");
+                Console.WriteLine("Wrong input");
+                Console.WriteLine("You will be redirected to the menu...");
                 Thread.Sleep(2000);
                 Console.Clear();
 
@@ -43,8 +43,8 @@ class Program
             else if (flag == false)
             {
 
-                Console.WriteLine("Falsche Eingabe");
-                Console.WriteLine("Sie werden wieder zu menu geleitet...");
+                Console.WriteLine("Wrong input");
+                Console.WriteLine("You will be redirected to the menu...");
                 Thread.Sleep(2000);
                 Console.Clear();
 
@@ -56,25 +56,25 @@ class Program
                     do
                     {
                         Console.Clear();
-                        Console.WriteLine("Wie viel möchten Sie Einsetzen?");
+                        Console.WriteLine("How much would you like to bet?");
                         flag2 = (Double.TryParse(Console.ReadLine(), out bet));
-                        timer.Interval = 25000; // 25 sek.
+                        timer.Interval = 25000; // 25 sec.
                         timer.Enabled = true;
                         timer.Start();
-                        
+
                         if (flag2 == true && bet < 1)
                         {
 
-                            Console.WriteLine("Falsche Eingabe. Keine Negativen Zahlen oder Null.");
-                            Console.WriteLine("Drucken um neu Einzusetzen");
+                            Console.WriteLine("Wrong input. No negative numbers or zero.");
+                            Console.WriteLine("Press to bet again");
                             Console.ReadKey();
 
                         }
                         else if (flag2 == false)
                         {
 
-                            Console.WriteLine("Falsche Eingabe");
-                            Console.WriteLine("Drucken um neu Einzusetzen");
+                            Console.WriteLine("Wrong input");
+                            Console.WriteLine("Press to bet again");
                             Console.ReadKey();
 
                         }
@@ -91,9 +91,10 @@ class Program
 
                 } while (true);
             }
-            
+
         } while (true);
-    }   
+    }
+}   
 }
 
 
