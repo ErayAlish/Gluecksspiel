@@ -1,17 +1,22 @@
-﻿namespace Glüksspiel;
-using System;
+﻿using System;
 using System.Timers;
 using System.Xml.Serialization;
+using System.Diagnostics;
+using System.Threading;
 
+namespace Glüksspiel;
 class Program
-    {
-       static Timer timer = new Timer();
+{
+      
     static void Main(string[] args)
     {
         bool flag;
         bool flag2;
         int menu = 0;
         double bet = 0;
+        string betOption;
+        int timeLimit = 30; // Zeitlimit von 30 Sekunden vor dem Einsetzen
+        Random random = new Random();
 
         Console.WriteLine("Welcome");
         Console.WriteLine("----------------------------");
@@ -57,10 +62,10 @@ class Program
                     {
                         Console.Clear();
                         Console.WriteLine("How much would you like to bet?");
+                        Console.Write("bet > ");
                         flag2 = (Double.TryParse(Console.ReadLine(), out bet));
-                        timer.Interval = 25000; // 25 sec.
-                        timer.Enabled = true;
-                        timer.Start();
+                       
+                        
 
                         if (flag2 == true && bet < 1)
                         {
@@ -78,16 +83,29 @@ class Program
                             Console.ReadKey();
 
                         }
-                        if (!timer.Enabled)
+                        var timer = System.Diagnostics.Stopwatch.StartNew();
+                        while (timer.ElapsedMilliseconds / 1000 < timeLimit)
                         {
+                            Console.Write("Ihre Wette: ");
+                            betOption = Console.ReadLine().ToLower();
+                            if (betOption == "schwarz" || betOption == "rot" || betOption == "gerade" || betOption == "ungerade")
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Ungültige Wette, bitte erneut versuchen");
+                            } 
+                            if (timer.ElapsedMilliseconds / 1000 >= timeLimit)
+                            {
+                                Console.WriteLine("Zeitlimit überschritten, Sie haben verloren.");
+                                continue;
+                            }
 
 
 
-                        }
 
-
-
-                    } while (true);
+                        } while (true);
 
                 } while (true);
             }
@@ -95,6 +113,6 @@ class Program
         } while (true);
     }
 }   
-}
+
 
 
