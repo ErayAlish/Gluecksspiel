@@ -7,7 +7,6 @@ using System.Threading;
 namespace Glüksspiel;
 class Program
 {
-      
     static void Main(string[] args)
     {
         bool flag;
@@ -56,16 +55,15 @@ class Program
             }
             if (menu == 2)
             {
+               
                 do
                 {
-                    do
-                    {
                         Console.Clear();
                         Console.WriteLine("How much would you like to bet?");
                         Console.Write("bet > ");
                         flag2 = (Double.TryParse(Console.ReadLine(), out bet));
-                       
-                        
+
+
 
                         if (flag2 == true && bet < 1)
                         {
@@ -95,7 +93,7 @@ class Program
                             else
                             {
                                 Console.WriteLine("Ungültige Wette, bitte erneut versuchen");
-                            } 
+                            }
                             if (timer.ElapsedMilliseconds / 1000 >= timeLimit)
                             {
                                 Console.WriteLine("Zeitlimit überschritten, Sie haben verloren.");
@@ -105,13 +103,15 @@ class Program
 
 
 
-                        } while (true);
+                        }
 
                 } while (true);
-            }
+                
+            } 
 
-        } while (true);
-    }
+        }while (true);
+    }      
+    
 }   
 
 
