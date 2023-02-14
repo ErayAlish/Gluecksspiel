@@ -1,23 +1,23 @@
-﻿using System;
+﻿namespace Glüksspiel;
+using System;
 using System.Timers;
 using System.Xml.Serialization;
 using System.Diagnostics;
 using System.Threading;
-
-namespace Glüksspiel;
 class Program
 {
     static void Main(string[] args)
     {
         bool flag;
         bool flag2;
-        bool t = true; 
+        bool t = true;
         double bet = 0;
         string betOption;
-       
+        var timer = System.Diagnostics.Stopwatch.StartNew();
+        int randomNumber = random.Next(0, 36);
         int timeLimit = 30; // Zeitlimit von 30 Sekunden vor dem Einsetzen
         int bet2 = 0;
-        
+
         int menu = 0;
         Random random = new Random();
 
@@ -75,7 +75,7 @@ class Program
                         Console.WriteLine("Wrong input. No negative numbers or zero.");
                         Console.WriteLine("Press to bet again");
                         Console.ReadKey();
-                      
+
                     }
                     else if (flag2 == false)
                     {
@@ -83,15 +83,14 @@ class Program
                         Console.WriteLine("Wrong input");
                         Console.WriteLine("Press to bet again");
                         Console.ReadKey();
-                       
+
                     }
 
-                }while (true);
+                
 
-                    var timer = System.Diagnostics.Stopwatch.StartNew();
-                    int randomNumber = random.Next(0, 36);
-                if (flag2 == true)
-                {
+               
+                  if (bet > 0)
+                  {   
                     do
                     {
                         do
@@ -171,12 +170,12 @@ class Program
                         }
                         else if (betOption == "Straight")
                         {
-                            if (betOption = randomNumber)
+                            //if (betOption = randomNumber)
                             {
                                 Console.WriteLine("Sie haben gewonnen!");
                                 Console.WriteLine("Gewinn: " + bet * 36);
                             }
-                            else
+                            //else
                             {
                                 Console.WriteLine("Sie haben verloren!");
                             }
@@ -193,17 +192,18 @@ class Program
 
 
 
+                     } while (true);
 
-                    } while (timer.ElapsedMilliseconds / 1000 < timeLimit);
+                  } 
 
 
-                }
-            } 
+                } while (timer.ElapsedMilliseconds / 1000 < timeLimit);
+            }
 
-        }while (true);
-    }      
-    
-}   
+        } while (true);
+    }
+
+}
 
 
 
