@@ -13,8 +13,8 @@ class Program
         bool t = true;
         double bet = 0;
         string betOption;
-        var timer = System.Diagnostics.Stopwatch.StartNew();
-        int randomNumber = random.Next(0, 36);
+        var timer = Stopwatch.StartNew();
+        int randomNumber;
         int timeLimit = 30; // Zeitlimit von 30 Sekunden vor dem Einsetzen
         int bet2 = 0;
 
@@ -85,9 +85,6 @@ class Program
                         Console.ReadKey();
 
                     }
-
-                
-
                
                   if (bet > 0)
                   {   
